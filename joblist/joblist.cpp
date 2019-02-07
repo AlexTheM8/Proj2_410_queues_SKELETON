@@ -8,6 +8,9 @@
 bool joblistHasJobs = false;
 
 int joblist::init(const char* filename) {
+	loadData(filename);
+	sortData(START_TIME);
+	joblistHasJobs = size() > 0;
 	return SUCCESS;
 }
 
@@ -16,6 +19,13 @@ PCB joblist::getNextJob() {
 }
 
 int joblist::doTick(int currentTick) {
-	return NO_JOBS;
+	joblistHasJobs = size() > 0;
+	if (!joblistHasJobs) {
+		return NO_JOBS;
+	}
+	if (currentTick == peekNextStartTime()) {
+		return ADD_JOB_TO_DISPATCHER;
+	}
+	return WAITING_TO_ADD_JOB_TO_DISPATCHER;
 }
 

@@ -16,8 +16,8 @@
 #include "../includes_usr/logger_single_thread.h"
 
 //this is the amount of time each process can run before it is swapped out
-const int	TIMESLICE = 5;
-const int	NUMBER_CYCLES_BETWEEN_IO_INTERRUPTS = 10;
+const int	TIMESLICE = 5;//5
+const int	NUMBER_CYCLES_BETWEEN_IO_INTERRUPTS = 10;//10
 
  int runTest(const char* pSourceFile, const char* pLogfile)
 {
@@ -53,7 +53,7 @@ const int	NUMBER_CYCLES_BETWEEN_IO_INTERRUPTS = 10;
 						break;
 
 					case PCB_BLOCKED_QUEUE_EMPTY:
-						PRINT1("	  PCB moved from blocked to ready");
+						PRINT1("	  PCB moved from blocked to ready Empty");
 						break;
 					default:
 						break;
